@@ -21,17 +21,17 @@ const AvailableMeals = () => {
 
       const responseData = await response.json();
 
-      const loadedMelas = [];
+      const loadedMeals = [];
 
       for (const key in responseData) {
-        loadedMelas.push({
-          id: key.id,
+        loadedMeals.push({
+          id: key,
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
         });
       }
-      setMeals(loadedMelas);
+      setMeals(loadedMeals);
       setIsLoading(false);
     };
 
@@ -57,6 +57,7 @@ const AvailableMeals = () => {
     );
   }
 
+  console.log(meals);
   const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
