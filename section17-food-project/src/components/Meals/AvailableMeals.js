@@ -57,7 +57,6 @@ const AvailableMeals = () => {
     );
   }
 
-  console.log(meals);
   const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
