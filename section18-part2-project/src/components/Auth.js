@@ -9,7 +9,7 @@ const Auth = () => {
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
   const loginHandler = () => {
-    dispatch(authActions.logout());
+    dispatch(authActions.login());
   };
 
   const showAuth = (
