@@ -8,7 +8,8 @@ const Auth = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
-  const loginHandler = () => {
+  const loginHandler = (event) => {
+    event.preventDefault();
     dispatch(authActions.login());
   };
 
