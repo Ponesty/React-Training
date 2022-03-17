@@ -31,9 +31,26 @@ function App() {
       if (!response.ok) {
         throw new Error("Sending cart data failed.");
       }
-      const responseData = await response.json();
+
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Success!",
+          message: "Sent cart data successfully!",
+        })
+      );
     };
-  }, [cart]);
+
+    sendCartData().catch((error) => {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Sending cart data failed!",
+        })
+      );
+    });
+  }, [cart, dispatch]);
 
   return (
     <Layout>
