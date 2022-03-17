@@ -1,15 +1,25 @@
 import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { uiActions } from "./store/ui-slice";
 import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
   const ui = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     const sendCartData = async () => {
+      dispatch(
+        uiActions.showNotification({
+          status: "pending",
+          title: "Sending...",
+          message: "Sending cart data!",
+        })
+      );
+
       const response = await fetch(
         "https://react-http-c9824-default-rtdb.firebaseio.com/cart.json",
         {
