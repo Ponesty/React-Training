@@ -1,1 +1,2 @@
-section20-multipage-project/.eslintcache
+*.eslintcache
+*/node_modules
