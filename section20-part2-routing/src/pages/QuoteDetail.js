@@ -11,6 +11,8 @@ const DUMMY_QUOTES = [
 
 const QuoteDetail = () => {
   const params = useParams();
+
+  const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
   return (
     <Fragment>
       <h1>Quote Detail Page</h1>
