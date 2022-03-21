@@ -60,7 +60,7 @@ const QuoteForm = (props) => {
             <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
           <div className={classes.actions}>
-            <button onCLick={finishedEnteringHandler} className="btn">
+            <button onClick={finishedEnteringHandler} className="btn">
               Add Quote
             </button>
           </div>
