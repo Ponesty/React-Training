@@ -1,5 +1,5 @@
-const NewQuotes = () => {
-  return;
+const NewQuote = () => {
+  return <h1>New Quotes Page</h1>;
 };
 
-export default NewQuotes;
+export default NewQuote;
