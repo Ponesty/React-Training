@@ -1,5 +1,8 @@
 import QuoteList from "../components/quotes/QuoteList";
 
+import useHttp from "../hooks/use-http";
+import { getAllQuotes } from "../lib/api";
+
 const DUMMY_QUOTES = [
   { id: "q1", author: "Eren Jeager", text: "Simp for no one!" },
   { id: "q2", author: "Vinsmoke Sanji", text: "Keep the simp gang strong!" },
