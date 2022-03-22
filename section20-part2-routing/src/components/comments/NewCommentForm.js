@@ -3,13 +3,13 @@ import { useRef, useEffect } from "react";
 import useHttp from "../../hooks/use-http";
 import { addComment } from "../../lib/api";
 import LoadingSpinner from "../UI/LoadingSpinner";
-
 import classes from "./NewCommentForm.module.css";
 
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
+
   const { sendRequest, status, error } = useHttp(addComment);
-  const enteredText = commentTextRef.current.value;
+
   const { onAddedComment } = props;
 
   useEffect(() => {
@@ -21,10 +21,11 @@ const NewCommentForm = (props) => {
   const submitFormHandler = (event) => {
     event.preventDefault();
 
+    const enteredText = commentTextRef.current.value;
+
     // optional: Could validate here
 
-    // send comment to server
-    sendRequest({ text: enteredText }, props.quoteId);
+    sendRequest({ commentData: { text: enteredText }, quoteId: props.quoteId });
   };
 
   return (
