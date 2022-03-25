@@ -29,12 +29,12 @@ const DUMMY_MEETUPS = [
 ];
 
 const HomePage = () => {
-  const [loadedMeetups, setloadedMeetups] = useState();
+  const [loadedMeetups, setloadedMeetups] = useState([]);
 
   useEffect(() => {
     // Sent a http request and fetch data
     setloadedMeetups(DUMMY_MEETUPS);
-  }, []);
+  }, [setloadedMeetups]);
 
   return <MeetupList meetups={loadedMeetups} />;
 };
