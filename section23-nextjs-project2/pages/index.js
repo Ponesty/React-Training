@@ -30,8 +30,13 @@ const DUMMY_MEETUPS = [
 
 const HomePage = () => {
   const [loadedMeetups, setloadedMeetups] = useState();
-  useEffect(() => {}, []);
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+
+  useEffect(() => {
+    // Sent a http request and fetch data
+    setloadedMeetups(DUMMY_MEETUPS);
+  }, []);
+
+  return <MeetupList meetups={loadedMeetups} />;
 };
 
 export default HomePage;
