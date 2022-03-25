@@ -1,0 +1,7 @@
+.detail {
+  text-align: center; /* centers text in detail class*/
+}
+
+.detail img {
+  width: 100%; /*makes sure image stays in box it is in.*/
+}
