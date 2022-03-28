@@ -1,3 +1,5 @@
+import { MongoClient } from "mongodb";
+
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -33,6 +35,14 @@ const HomePage = (props) => {
 
 export const getStaticProps = async () => {
   // fetch data from an API
+
+  const client = await MongoClient.connect(mondbLink());
+  const db = client.db();
+
+  const meetupsCollection = db.collection("meetups");
+
+  const meetups = await meetupsCollection.find().toArray();
+
   return {
     props: {
       meetups: DUMMY_MEETUPS,
