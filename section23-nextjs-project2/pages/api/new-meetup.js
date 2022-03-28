@@ -8,7 +8,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
 
-    const client = await MongoClient.connect(mondbLink);
+    const client = await MongoClient.connect(mondbLink());
     const db = client.db();
 
     const meetupsCollection = db.collection("meetups");
