@@ -1,3 +1,6 @@
+import { MongoClient } from "mongodb";
+import mondbLink from "../../components/link/mon";
+
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
 const MeetupDetails = () => {
@@ -12,20 +15,19 @@ const MeetupDetails = () => {
 };
 
 export const getStaticPaths = async () => {
+  const client = await MongoClient.connect(mondbLink());
+  const db = client.db();
+
+  const meetupsCollection = db.collection("meetups");
+  const meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
+
+  client.close();
+
   return {
     fallback: false,
-    paths: [
-      {
-        params: {
-          meetupId: "m1",
-        },
-      },
-      {
-        params: {
-          meetupId: "m2",
-        },
-      },
-    ],
+    paths: meetups.map((meetup) => ({
+      params: { meetupId: meetup._id.toString() },
+    })),
   };
 };
 
