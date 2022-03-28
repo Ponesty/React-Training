@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import mondbLink from "../components/link/mon";
 
 import MeetupList from "../components/meetups/MeetupList";
 
@@ -44,10 +45,16 @@ export const getStaticProps = async () => {
   const meetups = await meetupsCollection.find().toArray();
 
   client.close();
+  console.log(meetups);
 
   return {
     props: {
-      meetups: meetups,
+      meetups: meetups.map((meetup) => ({
+        title: meetup.data.title,
+        address: meetup.data.address,
+        image: meetup.data.image,
+        id: meetup._id.toString(),
+      })),
     },
     revalidate: 1,
   };
