@@ -1,15 +1,15 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import mondbLink from "../../components/link/mon";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-const MeetupDetails = () => {
+const MeetupDetails = (props) => {
   return (
     <MeetupDetail
-      image="https://globalgrasshopper.com/wp-content/uploads/2020/03/most-beautiful-places-to-visit-in-Japan-1000x667.jpg"
-      title="First Meetup"
-      address="Address 001, 12345 A Town"
-      description="First meetup!"
+      image={props.meetupData.image}
+      title={props.meetupData.title}
+      address={props.meetupData.address}
+      description={props.meetupData.description}
     />
   );
 };
@@ -33,18 +33,26 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   // fetch data from a single meetup
-
   const meetupId = context.params.meetupId;
-  console.log(meetupId);
+
+  const client = await MongoClient.connect(mondbLink());
+  const db = client.db();
+
+  const meetupsCollection = db.collection("meetups");
+  const selectedMeetup = await meetupsCollection.findOne({
+    _id: ObjectId(meetupId),
+  });
+
+  client.close();
+
   return {
     props: {
       meetupData: {
-        image:
-          "https://globalgrasshopper.com/wp-content/uploads/2020/03/most-beautiful-places-to-visit-in-Japan-1000x667.jpg",
-        id: meetupId,
-        title: "First Meetup",
-        address: "Address 001, 12345 A Town",
-        description: "First meetup!",
+        id: selectedMeetup._id.toString(),
+        title: selectedMeetup.data.title,
+        address: selectedMeetup.data.address,
+        image: selectedMeetup.data.image,
+        description: selectedMeetup.data.description,
       },
     },
   };
