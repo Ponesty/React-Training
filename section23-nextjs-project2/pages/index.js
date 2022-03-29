@@ -1,7 +1,9 @@
 import { MongoClient } from "mongodb";
 import mondbLink from "../components/link/mon";
+import Head from "next/head";
 
 import MeetupList from "../components/meetups/MeetupList";
+import { Fragment } from "react";
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -31,7 +33,18 @@ import MeetupList from "../components/meetups/MeetupList";
 // ];
 
 const HomePage = (props) => {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name="description"
+          content="Browse a huge list of higly active react meetups!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 };
 
 export const getStaticProps = async () => {
