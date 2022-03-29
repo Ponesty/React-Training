@@ -7,12 +7,11 @@ import List from "./components/List/List";
 
 class App extends Component {
   state = {
-    ModalIsOpen: false,
+    modalIsOpen: false,
   };
 
   showModal = () => {
     this.setState({ modalIsOpen: true });
-    console.log("clicked", this.state.modalIsOpen);
   };
 
   closeModal = () => {
@@ -23,8 +22,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <Modal show={this.state.ModalIsOpen} closed={this.closeModal} />
-        <Backdrop show={this.state.ModalIsOpen} />
+        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+        <Backdrop show={this.state.modalIsOpen} />
         <button className="Button" onClick={this.showModal}>
           Open Modal
         </button>
