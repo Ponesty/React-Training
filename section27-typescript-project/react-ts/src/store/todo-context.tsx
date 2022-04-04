@@ -7,7 +7,7 @@ type TodosContextObj = {
   deleteTodo: (id: string) => void;
 };
 
-const TodosContext = React.createContext<TodosContextObj>({
+export const TodosContext = React.createContext<TodosContextObj>({
   items: [],
   addTodo: () => {},
   deleteTodo: (id: string) => {},
@@ -43,3 +43,5 @@ const TodosContextProvider: React.FC = (props) => {
     </TodosContext.Provider>
   );
 };
+
+export default TodosContextProvider;
