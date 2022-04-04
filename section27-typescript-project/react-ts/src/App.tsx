@@ -13,10 +13,19 @@ function App() {
       return prevTodos.concat(new Todo(todoText));
     });
   };
+
+  const deleteTodo = (todoId: string) => {
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id !== todoId;
+      })
+    );
+  };
+
   return (
     <Fragment>
       <NewTodo onAddTodo={addTodo} />
-      <Todos items={todos} />
+      <Todos items={todos} onDelete={deleteTodo} />
     </Fragment>
   );
 }
