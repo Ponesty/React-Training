@@ -1,6 +1,5 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 
-import { TodosContext } from "./store/todo-context";
 import Todos from "./components/Todos";
 import NewTodo from "./components/NewTodo";
 
