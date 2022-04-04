@@ -1,6 +1,9 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
+
 const newTodo = () => {
-  const submitHandler = () => {};
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+  };
   return (
     <form onSubmit={submitHandler}>
       <label htmlFor="text">Todo Text</label>
