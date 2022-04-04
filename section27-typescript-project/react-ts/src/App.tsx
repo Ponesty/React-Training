@@ -1,13 +1,14 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext } from "react";
+
+import { TodosContext } from "./store/todo-context";
 import Todos from "./components/Todos";
-import Todo from "./models/todo";
 import NewTodo from "./components/NewTodo";
 
 function App() {
   return (
     <Fragment>
-      <NewTodo onAddTodo={addTodo} />
-      <Todos items={todos} onDelete={deleteTodo} />
+      <NewTodo />
+      <Todos />
     </Fragment>
   );
 }
