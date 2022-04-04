@@ -8,8 +8,8 @@ function App() {
     new Todo("Learn React"),
     new Todo("Learn TypeScript"),
   ]);
-  const addTodo = (todo: string) => {
-    setTodos([...todos, new Todo(todo)]);
+  const addTodo = (todoText: string) => {
+    setTodos([...todos, new Todo(todoText)]);
   };
   return (
     <Fragment>
