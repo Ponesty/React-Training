@@ -3,7 +3,7 @@ import Todo from "../models/todo";
 
 type TodosContextObj = {
   items: Todo[];
-  addTodo: () => void;
+  addTodo: (text: string) => void;
   deleteTodo: (id: string) => void;
 };
 
@@ -38,8 +38,8 @@ const TodosContextProvider: React.FC = (props) => {
     deleteTodo: deleteTodo,
   };
   return (
-    <TodosContextProvider value={contextValue}>
+    <TodosContext.Provider value={contextValue}>
       {props.children}
-    </TodosContextProvider>
+    </TodosContext.Provider>
   );
 };
